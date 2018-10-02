@@ -34,7 +34,9 @@ class Main extends CI_Controller {
 		
 		$data=array('email'=>$this->input->post('email'), 'is_logged_in'=>1);
 		$this->session->set_userdata($data);
+		
 		redirect('index.php/Main/registrar');
+		
 	}else{
 	$this->load->view('Loginmsg');
 
