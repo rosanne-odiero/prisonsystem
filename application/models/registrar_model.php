@@ -1,23 +1,58 @@
 <?php
- class Model_users extends CI_Model
- {
-     public function add_register($enkey)
-     {
-        $data=array(
-            'email'=>$this->input->post('email'),
-            'password'=>md5($this->input->post('password')),
-            'fullname'=>$this->input->post('fullname'),
-            'occupation'=>$this->input->post('occupation'),
-            'phonenumber'=>$this->input->post('phonenumber'),
-            'profilepicture'=>$this->input->post('profilepicture'),
-            'gender'=>$this->input->post('gender'),
-            'enkey'=>$enkey
-        ); 
-        $query=$this->db->insert('register',$data);
-if($query){
-    return true;
-}else {
-    return false;
-}
-     }
- }
+	class registrar_model extends CI_Model{
+		public function __construct(){
+			$this->load->database();
+		}
+
+		public function get_prisoner($firstname = FALSE){
+			if($firstname === FALSE){
+				$this->db->order_by('prisoner.id','DESC');
+				$query = $this->db->get('prisoner');
+				return $query->result_array();
+			}
+
+
+			$query = $this->db->get_where('prisoner', array('firstname'=>$firstname));
+			return $query->row_array();
+		}
+
+		public function add_prisoner($prisoner_image){
+			$slug =url_title($this->input->post('nationalid'));
+
+			$data = array(
+				'firstname'=> $this->input->post('firstname'),
+				'lastname'=> $this->input->post('lastname'),
+				'email'=> $this->input->post('email'),
+				'nationalid'=> $this->input->post('nationalid'),
+				'charges'=> $this->input->post('charges'),
+				'number'=> $this->input->post('number'),
+				'prisoner_image' => $prisoner_image
+			);
+
+				return $this->db->insert('prisoner', $data);
+		}
+
+		public function delete_post($id){
+			$this->db->where('id',$id);
+			$this->db->delete('prisoner');
+			return true;
+		}
+
+		public function update_post(){
+			$slug =url_title($this->input->post('nationalid'));
+
+			$data = array(
+				'firstname'=> $this->input->post('firstname'),
+				'lastname'=> $this->input->post('lastname'),
+				'email'=> $this->input->post('email'),
+				'nationalid'=> $this->input->post('nationalid'),
+				'charges'=> $this->input->post('charges'),
+				'number'=> $this->input->post('number')
+			);
+
+			$this->db->where('id', $this->input->post('id'));
+			return $this->db->update('prisoner', $data);
+		}
+	}
+
+ 

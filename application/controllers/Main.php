@@ -13,7 +13,7 @@ class Main extends CI_Controller {
 	public function registrar()
 	{
 		if($this->session->userdata('is_logged_in')){
-          $this->load->view('registrar');
+          $this->load->view('registrarview');
 		}else {
 			redirect('index.php/Main/restricted');
 		}
@@ -30,7 +30,7 @@ class Main extends CI_Controller {
 	$this->form_validation->set_rules('email', 'Email', 'required|trim|callback_Validate_credentials');
 	$this->form_validation->set_rules('password', 'Password', 'required|md5');
 
-	if($this-> form_validation->run()){
+	if($this->form_validation->run()){
 		
 		$data=array('email'=>$this->input->post('email'), 'is_logged_in'=>1);
 		$this->session->set_userdata($data);
