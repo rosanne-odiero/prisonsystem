@@ -2,38 +2,35 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-    <title>Doctor</title>
-   
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('Prison/css/bootstrap.min.css');?>">
+	<title>Doctors' Page</title>
+	<script type="text/javascript" src="<?php echo base_url('Prison/js/bootstrap.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('Prison/js/jquery331.js');?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('Prison/css/bootstrap.css');?>">
+	
 </head>
 <body>
-<div id ="container">
-	<h1>Welcome to The Doctors Page!</h1>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Doctor</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">DOCTOR</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Patients</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Medical Information</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Prescriptions</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
+        <a class="nav-link" href="#">ABOUT</a>
+      </li> -->
+      
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>
-</div>
