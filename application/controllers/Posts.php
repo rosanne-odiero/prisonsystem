@@ -14,7 +14,7 @@
 
 		public function create(){
 			$data['title'] = 'Add Prisoner';
-
+            $this->load->library('form_validation');
 			$data['duty'] =  $this->post_model->get_duties();
 
 			$this->form_validation->set_rules('firstname', 'Firstname','required');
@@ -23,6 +23,7 @@
 			$this->form_validation->set_rules('nationalid', 'NationalID','required');
 			$this->form_validation->set_rules('charges', 'Charges','required');
 			$this->form_validation->set_rules('number', 'Phone Number');
+			$this->form_validation->set_rules('addedby','addedby');
 
 			if($this->form_validation->run() === FALSE){
 				$this->load->view('templates/header'); 
@@ -48,12 +49,28 @@
 					$prisoner_image = $_FILES['userfile']['name']; 
 				}
 
-				$this->post_model->add_prisoner($prisoner_image); //create_post
-				redirect('posts');
-			}
+				$this->post_model->add_prisoner($prisoner_image);
+				if($this->form_validation->run()){
+		$addedby = $this->input->post('addedby');
+		$data['user'] = $this->post_model->fetch_user($addedby);
+		if($data['user']['addedby']=="Registrar"){
+			$data=array('addedby'=>$this->input->post('addedby'));
+			
+			redirect('index.php/registrar/prisonerdetails');
+		}else if($data['user']['addedby']=="Supervisor"){
+			$data=array('addedby'=>$this->input->post('addedby'), 'is_logged_in'=>1);
+
+			redirect('index.php/posts');
+		}
+			
+			// 	redirect('posts');
+			// }
 
 		}
-
+	}
+}
+		
+				
 		public function view($slug = NULL){
 			$data['prisoner'] = $this->post_model->get_prisoner($slug);
 

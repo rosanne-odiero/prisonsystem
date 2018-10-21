@@ -12,7 +12,7 @@
 	<tr class="table-active"> 
 		<table class="table table-hover">
 			<th scope="row">
-				<small class="post-date">Registered on <?php echo $post['register_date']; ?>; Duty<strong> <?php echo $post['name']; ?></strong></small><br>
+				<small class="post-date">Registered on <?php echo $post['register_date']; ?>; Duty<strong> <?php echo $post['duty_id']; ?></strong></small><br>
 			</th>	
 		</table>	
 	</div>	

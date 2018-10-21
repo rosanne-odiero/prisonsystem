@@ -27,6 +27,12 @@
     <input type="text" class="form-control" name="number" placeholder="Phone Number">
   </div> 
   <div class="form-group">
+  <label>Added by</label>
+  <select class="form-control selcls" name="addedby">
+			<option>Registrar</option>
+			<option>Supervisor</option>
+		</select></div>
+  <div class="form-group">
     <label>Duty</label>
     <select class="form-control" name="duty_id">
     <?php foreach($duty as $duties): ?> 

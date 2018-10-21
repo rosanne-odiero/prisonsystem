@@ -4,6 +4,7 @@ class Main extends CI_Controller {
 
 	public function index()
 	{
+		
 		$this->load->view('Loginmsg');
 	}
 	public function signup()
@@ -13,7 +14,8 @@ class Main extends CI_Controller {
 	public function registrar()
 	{
 		if($this->session->userdata('is_logged_in')){
-          $this->load->view('registrarview');
+			
+		  	$this->load->view('registrarview');
 		}else {
 			redirect('index.php/Main/restricted');
 		}
@@ -30,12 +32,21 @@ class Main extends CI_Controller {
 	$this->form_validation->set_rules('email', 'Email', 'required|trim|callback_Validate_credentials');
 	$this->form_validation->set_rules('password', 'Password', 'required|md5');
 
+	
 	if($this->form_validation->run()){
+		$email = $this->input->post('email');
+		$data['user'] = $this->model_users->fetch_user($email);
+		if($data['user']['occupation']=="Registrar"){
+			$data=array('email'=>$this->input->post('email'), 'is_logged_in'=>1);
+			$this->session->set_userdata($data);
+			redirect('index.php/Main/registrar');
+		}else if($data['user']['occupation']=="Supervisor"){
+			$data=array('email'=>$this->input->post('email'), 'is_logged_in'=>1);
+			$this->session->set_userdata($data);
+			redirect('index.php/posts');
+		}
 		
-		$data=array('email'=>$this->input->post('email'), 'is_logged_in'=>1);
-		$this->session->set_userdata($data);
 		
-		redirect('index.php/Main/registrar');
 		
 	}else{
 	$this->load->view('Loginmsg');

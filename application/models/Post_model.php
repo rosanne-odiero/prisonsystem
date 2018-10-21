@@ -6,8 +6,8 @@
 
 		public function get_prisoner($firstname = FALSE){
 			if($firstname === FALSE){
-				$this->db->order_by('prisoner.id','DESC');
-				$this->db->join('duty','duty.id = prisoner.duty_id');
+				// $this->db->order_by('prisoner.id','DESC');
+				// $this->db->join('duty','duty.id = prisoner.duty_id');
 				$query = $this->db->get('prisoner');
 				return $query->result_array();
 			}
@@ -28,6 +28,7 @@
 				'charges'=> $this->input->post('charges'),
 				'duty_id' => $this->input->post('duty_id'),
 				'number'=> $this->input->post('number'),
+				'addedby'=>$this->input->post('addedby'),
 				'prisoner_image' => $prisoner_image
 			);
 
@@ -50,6 +51,7 @@
 				'nationalid'=> $this->input->post('nationalid'),
 				'charges'=> $this->input->post('charges'),
 				'duty_id' => $this->input->post('duty_id'),
+				'addedby'=>$this->input->post('addedby'),
 				'number'=> $this->input->post('number')
 			);
 
@@ -62,4 +64,9 @@
 			$query = $this->db->get('duty');
 			return $query->result_array();
 		}
+		public function fetch_user($addedby){
+        $this->db->where('addedby', $addedby);
+        $query=$this->db->get('prisoner');
+        return $query->row_array();
+     }
 	}

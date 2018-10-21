@@ -24,6 +24,13 @@
     <textarea  id='editor1' class="form-control" name="charges" placeholder="Charges" ><?php echo $prisoner['charges']; ?></textarea>
   </div> 
   <div class="form-group">
+  <select class="form-control selcls" name="addedby">
+   <label>Added by</label>
+			<option>Added by</option>
+			<option>Registrar</option>
+			<option>Supervisor</option>
+		</select><br></div>
+  <div class="form-group">
     <label>Duty</label>
     <select class="form-control" name="duty_id">
     <?php foreach($duty as $duties): ?> 

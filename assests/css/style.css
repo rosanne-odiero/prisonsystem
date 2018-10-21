@@ -26,3 +26,9 @@ header{
 .post-thumb{
 	width: 100%;
 }
+.post-dat{
+	background: black;
+	padding: 4px;
+	margin: 3px 0;
+	display: block;
+}
