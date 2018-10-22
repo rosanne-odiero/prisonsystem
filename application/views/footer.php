@@ -1,4 +1,5 @@
-<script type="text/javascript" src="<?php echo base_url('Prison/js/bootstrap.js');?>"></script>
-<script type="text/javascript" src="<?php echo base_url('Prison/jquery331.js');?>"></script>
+<hr>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+</nav>
 </body>
 </html>

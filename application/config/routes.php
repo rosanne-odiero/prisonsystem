@@ -55,6 +55,7 @@ $route['(:any)'] = 'pages/view/$1';
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
 $route['registrar/registerprisoners'] = 'registrar/registerprisoners';
 $route['default_controller'] = 'Main';
 
