@@ -13,6 +13,7 @@
             return false;
         }
      }
+   
      public function add_register($enkey)
      {
         $data=array(
@@ -32,4 +33,10 @@ if($query){
     return false;
 }
      }
+     public function fetch_user($email){
+        $this->db->where('email', $email);
+        $query=$this->db->get('register');
+        return $query->row_array();
+     }
+     
  }
