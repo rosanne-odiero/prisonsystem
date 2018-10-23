@@ -1,2 +1,2 @@
-<h2><?= $title?> </h2>
-<p> Version 1.0</p>
+<h2><?= $title ?></h2>
+<p>Nurse Module version 1.0</p>
